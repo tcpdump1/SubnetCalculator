@@ -1,6 +1,3 @@
-#https://networkengineering.stackexchange.com/questions/7106/how-do-you-calculate-the-prefix-network-subnet-and-host-numbers
-#https://www.pluralsight.com/blog/it-ops/simplify-routing-how-to-organize-your-network-into-smaller-subnets
-
 def subnetcalculator(ipaddress, subnetmask):
     
     
