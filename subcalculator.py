@@ -87,12 +87,32 @@ def subnetcalculator(ipaddress, subnetmask):
     lastadd = [x for x in broadadd]
     lastadd = "".join(lastadd[0:31]) + "0"
     last_add = [str(int(lastadd[0:8],2)), str(int(lastadd[8:16],2)), str(int(lastadd[16:24],2)), str(int(lastadd[24:32],2))]
-    
 
-#### Join the lists into a string and print    
-    print "The network address is %s" %(".".join(network_add))
-    print "The first IP address in this subnet is %s" %(".".join(first_add)) 
-    print "The last IP address in this subnet is %s" %(".".join(last_add))
-    print "The broadcast address is %s" %(".".join(broadcast_add)) 
 
-subnetcalculator("8.8.8.8", "255.255.255.248")
+ #### Print the class of IP address
+    if int(ipaddress_list[0],2) < 128:
+        print "This is a Class A IP Address."
+    elif int(ipaddress_list[0],2) >= 128 and int(ipaddress_list[0],2) < 192:
+         print "This is a Class B IP Address."
+    elif int(ipaddress_list[0],2) >= 192 and int(ipaddress_list[0],2) < 224:
+         print "This is a Class C IP Address."
+    elif int(ipaddress_list[0],2) >= 224 and int(ipaddress_list[0],2) < 239:
+         print "This is a Class D IP Address and it is reserved for multicasting."
+    elif int(ipaddress_list[0],2) >= 240 and int(ipaddress_list[0],2) <= 254:
+         print "This is a Class E IP Address and it is used for research."
+    else:
+        pass
+
+
+
+#### Join the lists into a string and print
+    if int(ipaddress_list[0],2) < 255:
+        print "The network address is %s" %(".".join(network_add))
+        print "The first IP address in this subnet is %s" %(".".join(first_add)) 
+        print "The last IP address in this subnet is %s" %(".".join(last_add))
+        print "The broadcast address is %s" %(".".join(broadcast_add))
+        
+    else:
+        print "This is not a valid IP address."
+
+subnetcalculator("254.8.128.8", "255.255.0.0")
